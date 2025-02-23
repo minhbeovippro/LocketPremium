@@ -1,4 +1,4 @@
-var specificDate = "2025-02-20T00:00:00Z";
+var specificDate = "2025-02-22T00:00:00Z";
 
 const mapping = {
   '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
@@ -37,16 +37,22 @@ var gold_entitlement = {
   expires_date: "2099-12-31T01:04:17Z"
 };
 
-const match = Object.keys(mapping).find(e => ua.includes(e));
+// Mở khóa tất cả các tính năng
+obj.subscriber.subscriptions["com.locket.premium.yearly"] = locketgold;
+obj.subscriber.entitlements["Locket"] = gold_entitlement;
 
-if (match) {
-  let entitlementKey = mapping[match][0] || "Locket";
-  let subscriptionKey = mapping[match][1] || "com.locket.premium.yearly";
-  obj.subscriber.subscriptions[subscriptionKey] = locketgold;
-  obj.subscriber.entitlements[entitlementKey] = gold_entitlement;
-} else {
-  obj.subscriber.subscriptions["com.locket.premium.yearly"] = locketgold;
-  obj.subscriber.entitlements["Locket"] = gold_entitlement;
-}
+// Thêm các quyền khác nếu cần
+obj.subscriber.entitlements["app_icon_picker"] = gold_entitlement;
+obj.subscriber.entitlements["camera_roll"] = gold_entitlement;
+obj.subscriber.entitlements["camera_theme"] = gold_entitlement;
+obj.subscriber.entitlements["locket_views"] = gold_entitlement;
+obj.subscriber.entitlements["remove_ads"] = gold_entitlement;
+obj.subscriber.entitlements["custom_widget_frames"] = gold_entitlement;
+obj.subscriber.entitlements["long_captions"] = gold_entitlement;
+obj.subscriber.entitlements["unlimited_friends"] = gold_entitlement;
+obj.subscriber.entitlements["priority_support"] = gold_entitlement;
+obj.subscriber.entitlements["profile_badge"] = gold_entitlement;
+obj.subscriber.entitlements["video"] = gold_entitlement;
+obj.subscriber.entitlements["streak_recovery"] = gold_entitlement;
 
 $done({ body: JSON.stringify(obj) });
