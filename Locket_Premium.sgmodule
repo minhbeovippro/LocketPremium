@@ -2,9 +2,9 @@
 user-agent = Locket/1.0.0 (iPhone; iOS 18.1.1; Scale/3.00)
 
 [Script]
-revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.*\/(receipts$|subscribers\/[^/]+$), script-path=https://cdn.jsdelivr.net/gh/minhbeovippro/LocketPremium@main/Locket_Premium.js, requires-body=true, timeout=120
+revenuecat = type=http-response, pattern=^https:\/\/api\.revenuecat\.com\/.*\/(receipts$|subscribers\/[^/]+$), script-path=https://raw.githubusercontent.com/minhbeovippro/LocketPremium/main/Locket_Premium.js, requires-body=true, timeout=60
 
-deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.*\/(receipts|subscribers), script-path=https://cdn.jsdelivr.net/gh/minhbeovippro/LocketPremium@main/deleteHeader.js, timeout=120
+deleteHeader = type=http-request, pattern=^https:\/\/api\.revenuecat\.com\/.*\/(receipts|subscribers), script-path=https://raw.githubusercontent.com/minhbeovippro/LocketPremium/main/deleteHeader.js, timeout=60
 
 [MITM]
 hostname = api.revenuecat.com, raw.githubusercontent.com
