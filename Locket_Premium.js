@@ -11,7 +11,6 @@ var ua = $request.headers["User-Agent"] || $request.headers["user-agent"];
 try {
   var obj = JSON.parse($response.body);
 } catch (e) {
-  console.log("Lỗi phân tích JSON:", e);
   $done({});
 }
 
