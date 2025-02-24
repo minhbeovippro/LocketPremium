@@ -1,28 +1,32 @@
-const specificDate = "2025-02-22T00:00:00Z";
+var specificDate = "2025-02-02T00:00:00Z";
 
 const mapping = {
-  '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
-  'Locket': ['Gold']
+  '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip', 'com.locket.premium.yearly'],
+  'Locket': ['Locket', 'com.locket.premium.yearly']
 };
 
+// Lấy User-Agent từ request
 var ua = $request.headers["User-Agent"] || $request.headers["user-agent"];
 
 try {
   var obj = JSON.parse($response.body);
 } catch (e) {
+  console.log("Lỗi phân tích JSON:", e);
   $done({});
 }
 
-if (!obj.subscriber) obj.subscriber = {};
-if (!obj.subscriber.entitlements) obj.subscriber.entitlements = {};
-if (!obj.subscriber.subscriptions) obj.subscriber.subscriptions = {};
+// Khởi tạo cấu trúc dữ liệu nếu chưa có
+obj.subscriber = obj.subscriber || {};
+obj.subscriber.entitlements = obj.subscriber.entitlements || {};
+obj.subscriber.subscriptions = obj.subscriber.subscriptions || {};
 
-var locketGold = {
+// Định nghĩa dữ liệu gói đăng ký và quyền lợi
+var subscriptionData = {
   is_sandbox: false,
   ownership_type: "PURCHASED",
   billing_issues_detected_at: null,
   period_type: "normal",
-  expires_date: "2099-12-31T01:04:17Z",
+  expires_date: "2099-12-31T01:01:01Z",
   grace_period_expires_date: null,
   unsubscribe_detected_at: null,
   original_purchase_date: specificDate,
@@ -30,23 +34,27 @@ var locketGold = {
   store: "app_store"
 };
 
-var goldEntitlement = {
+var entitlementData = {
   grace_period_expires_date: null,
   purchase_date: specificDate,
-  product_identifier: "com.locket.gold.yearly",
-  expires_date: "2099-12-31T01:04:17Z"
+  product_identifier: "com.locket.premium.yearly",
+  expires_date: "2099-12-31T01:01:01Z"
 };
 
-const match = Object.keys(mapping).find(e => ua.includes(e));
+// Tìm key phù hợp trong `mapping`
+let entitlementKey = "Locket";
+let subscriptionKey = "com.locket.premium.yearly";
 
-if (match) {
-  let entitlementKey = mapping[match][0] || "Gold";
-  let subscriptionKey = "com.locket.gold.yearly";
-  obj.subscriber.subscriptions[subscriptionKey] = locketGold;
-  obj.subscriber.entitlements[entitlementKey] = goldEntitlement;
-} else {
-  obj.subscriber.subscriptions["com.locket.gold.yearly"] = locketGold;
-  obj.subscriber.entitlements["Gold"] = goldEntitlement;
+for (let key in mapping) {
+  if (ua.includes(key)) {
+    entitlementKey = mapping[key][0] || entitlementKey;
+    subscriptionKey = mapping[key][1] || subscriptionKey;
+    break;
+  }
 }
+
+// Gán dữ liệu đăng ký
+obj.subscriber.subscriptions[subscriptionKey] = subscriptionData;
+obj.subscriber.entitlements[entitlementKey] = entitlementData;
 
 $done({ body: JSON.stringify(obj) });
