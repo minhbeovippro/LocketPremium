@@ -27,14 +27,18 @@ var locketgold = {
   unsubscribe_detected_at: null,
   original_purchase_date: specificDate,
   purchase_date: specificDate,
-  store: "app_store"
+  store: "us_app_store",
+  country: "US",
+  region: "us"
 };
 
 var gold_entitlement = {
   grace_period_expires_date: null,
   purchase_date: specificDate,
   product_identifier: "com.locket.gold.yearly",
-  expires_date: "2099-12-31T00:00:00Z"
+  expires_date: "2099-12-31T00:00:00Z",
+  country: "US",
+  region: "us"
 };
 
 const match = Object.keys(mapping).find(e => ua.includes(e));
