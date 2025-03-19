@@ -37,6 +37,7 @@ var gold_entitlement = {
   purchase_date: specificDate,
   product_identifier: "com.locket.premium.yearly",
   expires_date: "2099-12-31T00:00:00Z",
+  gold_badge_enabled: true
 };
 
 const match = Object.keys(mapping).find(e => ua.includes(e));
