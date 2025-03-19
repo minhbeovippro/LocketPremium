@@ -35,7 +35,7 @@ var locketgold = {
 var gold_entitlement = {
   grace_period_expires_date: null,
   purchase_date: specificDate,
-  product_identifier: "com.locket.gold.yearly",
+  product_identifier: "com.locket.premium.yearly",
   expires_date: "2099-12-31T00:00:00Z",
 };
 
@@ -43,12 +43,12 @@ const match = Object.keys(mapping).find(e => ua.includes(e));
 
 if (match) {
   let entitlementKey = mapping[match][0] || "Locket";
-  let subscriptionKey = mapping[match][1] || "com.locket.gold.yearly";
+  let subscriptionKey = mapping[match][1] || "com.locket.premium.yearly";
 
   obj.subscriber.subscriptions[subscriptionKey] = locketgold;
   obj.subscriber.entitlements[entitlementKey] = gold_entitlement;
 } else {
-  obj.subscriber.subscriptions["com.locket.gold.yearly"] = locketgold;
+  obj.subscriber.subscriptions["com.locket.premium.yearly"] = locketgold;
   obj.subscriber.entitlements["Locket"] = gold_entitlement;
 }
 
