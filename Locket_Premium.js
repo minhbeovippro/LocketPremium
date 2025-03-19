@@ -1,4 +1,4 @@
-var specificDate = "2025-03-23T00:00:00Z"; 
+var specificDate = "2025-03-25T00:00:00Z"; 
 
 const mapping = {
   '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
@@ -37,8 +37,6 @@ var gold_entitlement = {
   purchase_date: specificDate,
   product_identifier: "com.locket.gold.yearly",
   expires_date: "2099-12-31T00:00:00Z",
-  country: "US",
-  region: "us"
 };
 
 const match = Object.keys(mapping).find(e => ua.includes(e));
