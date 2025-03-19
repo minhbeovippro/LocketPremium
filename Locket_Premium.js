@@ -27,7 +27,7 @@ var locketgold = {
   unsubscribe_detected_at: null,
   original_purchase_date: specificDate,
   purchase_date: specificDate,
-  store: "us_app_store",
+  store: "app_store",
   country: "US",
   region: "us"
 };
@@ -37,7 +37,7 @@ var gold_entitlement = {
   purchase_date: specificDate,
   product_identifier: "com.locket.premium.yearly",
   expires_date: "2099-12-31T00:00:00Z",
-  gold_badge_enabled: true
+  region: "us"
 };
 
 const match = Object.keys(mapping).find(e => ua.includes(e));
