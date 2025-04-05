@@ -1,4 +1,4 @@
-var specificDate = "2025-04-01T00:00:00Z"; 
+var specificDate = "2025-04-15T00:00:00Z"; 
 
 const mapping = {
   '%E8%BD%A6%E7%A5%A8%E7%A5%A8': ['vip+watch_vip'],
@@ -27,7 +27,7 @@ var locketgold = {
   unsubscribe_detected_at: null,
   original_purchase_date: specificDate,
   purchase_date: specificDate,
-  store: "us_app_store",
+  store: "app_store",
   store_country: "US",
   country: "US",
   region: "us" 
@@ -38,7 +38,7 @@ var gold_entitlement = {
   purchase_date: specificDate,
   product_identifier: "com.locket.premium.yearly",
   expires_date: "2099-12-31T00:00:00Z",
-  store: "us_app_store",
+  store: "app_store",
   store_country: "US",
   country: "US",
   region: "us"
