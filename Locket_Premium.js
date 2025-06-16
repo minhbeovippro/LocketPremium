@@ -30,7 +30,7 @@ var locketgold = {
   store: "app_store",
   store_country: "US",
   country: "US",
-  region: "US" 
+  region: "us" 
 };
 
 var gold_entitlement = {
@@ -41,7 +41,7 @@ var gold_entitlement = {
   store: "app_store",
   store_country: "US",
   country: "US",
-  region: "US"
+  region: "us"
 };
 
 
