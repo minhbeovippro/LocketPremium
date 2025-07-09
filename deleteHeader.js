@@ -1,4 +1,4 @@
-const version = 'V1.0.3';
+const version = 'V1.0.5';
 
 function setHeaderValue(e, a, d) {
   var r = a.toLowerCase();
